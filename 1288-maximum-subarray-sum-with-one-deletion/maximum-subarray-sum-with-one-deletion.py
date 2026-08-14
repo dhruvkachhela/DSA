@@ -14,7 +14,7 @@ class Solution(object):
 
             nodelete = max(nodelete + arr[i] , arr[i])
 
-            if prev_onedelete == float('inf'):
+            if prev_onedelete == float('-inf'):
                 prev_onedelete = arr[i]
             else:
                 prev_onedelete = prev_onedelete + arr[i]
