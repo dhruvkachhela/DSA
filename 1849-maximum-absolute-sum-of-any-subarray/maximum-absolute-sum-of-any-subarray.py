@@ -10,5 +10,5 @@ class Solution(object):
         for i in range( 1 , len(nums)):
             max_sum = max( max_sum + nums[i] , nums[i])
             min_sum = min( min_sum + nums[i] , nums[i])
-            res = max(res, max(abs(min_sum) , max_sum))
+            res = max(res, max(abs(min_sum) , abs(max_sum)))
         return res
