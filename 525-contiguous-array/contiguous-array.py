@@ -6,7 +6,7 @@ class Solution(object):
         """
         zero = 0
         one = 0
-        seen = {}
+        seen = {0 : -1}
         res = 0
         for i in range( 0 , len(nums)):
             if nums[i]== 0:
@@ -15,12 +15,8 @@ class Solution(object):
                 one+=1
             
             diff = zero - one
-            if diff == 0:
-                res = max(res , i+1)
-            if diff not in seen:
-                seen[diff] = i
+            if diff in seen:
+                res = max(res, i - seen[diff])
             else:
-                index = seen[diff]
-                lenth = i - index
-                res = max(res , lenth)
+                seen[diff] = i
         return res
