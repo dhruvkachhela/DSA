@@ -7,14 +7,26 @@ class Solution(object):
         :type n: int
         :rtype: None Do not return anything, modify nums1 in-place instead.
         """
-        idx = 0
-        for i in range(m , m+n):
-            nums1[i] = nums2[idx]
+        k = []
+        current_index_1 = 0
+        current_index_2 = 0
+        while True:
+            if current_index_1 == m or current_index_2 == n:
+                break
+            if nums1[current_index_1] > nums2[current_index_2]:
+                k.append(nums2[current_index_2])
+                current_index_2 += 1
+            else:
+                k.append(nums1[current_index_1])
+                current_index_1 += 1
 
-            j = i
-            while j > 0 and nums1[j-1] > nums1[j]:
-                nums1[j-1] , nums1[j] = nums1[j] , nums1[j-1]
-                j-=1
-            idx +=1
-        return nums1
+        if current_index_1 == m:
+            for i in range(current_index_2, n):
+                k.append(nums2[i])
+
+        if current_index_2 == n:
+            for i in range(current_index_1, m):
+                k.append(nums1[i])
+
+        nums1[:] = k
 
