@@ -7,7 +7,14 @@ class Solution(object):
         :type n: int
         :rtype: None Do not return anything, modify nums1 in-place instead.
         """
-        for i in range(n):
-            nums1[m+i] = nums2[i]
+        idx = 0
+        for i in range(m , m+n):
+            nums1[i] = nums2[idx]
 
-        return nums1.sort()
+            j = i
+            while j > 0 and nums1[j-1] > nums1[j]:
+                nums1[j-1] , nums1[j] = nums1[j] , nums1[j-1]
+                j-=1
+            idx +=1
+        return nums1
+
