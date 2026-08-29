@@ -4,14 +4,19 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        count = 0
-        max_count = count
-        for i in range(len(nums)):
-            if nums[i] == 1:
-                count +=1
-                max_count = max (max_count , count)
+        left = 0
+        right = 0
+        max_length= 0
+        while right < len(nums):
+            if nums[right] == 1:
+                right+=1
+                max_length = max(max_length , right-left +1)
             else:
-                count = 0
-        return max_count
+                left = right +1
+                right +=1
+        if max_length <1:
+            return 0
+        return max_length-1
+         
 
             
