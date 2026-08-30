@@ -10,4 +10,4 @@ class Solution(object):
             s[left], s[right] = s[right] , s[left]
             left +=1
             right -=1
-        return s
+        
