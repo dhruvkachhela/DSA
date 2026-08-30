@@ -1,3 +1,4 @@
+from collections import Counter
 class Solution(object):
     def isAnagram(self, s, t):
         """
@@ -7,8 +8,7 @@ class Solution(object):
         """
         if len(s) == len(t):
             seen= {}
-            for char in s:
-                seen[char] = seen.get(char , 0)+1
+            seen= Counter(s)
 
             for char in t:
                 if char not in seen:
